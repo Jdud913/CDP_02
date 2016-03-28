@@ -223,5 +223,44 @@ public class DBmanager {
 	}
 	
 	
+	public String getmsg(String bid)
+	{
+		String msg = "";
+		
+	try
+    {
+		if(conn == null)
+			return null;
+		
+		String query = "SELECT link FROM message WHERE bid = ? ";
+		
+		pstmt = conn.prepareStatement(query);
+	      
+	    pstmt.setString(1, bid);
+		
+	    Statement st = conn.createStatement();
+		ResultSet rs = pstmt.executeQuery();
+                
+      // iterate through the java resultset
+      while (rs.next())
+      {
+    	  msg = rs.getString("msg");
+        
+        // print the results
+        
+      }
+      
+      st.close();
+      return msg;
+    }
+	catch (Exception e)
+    {
+      System.err.println("Got an exception! ");
+      System.err.println(e.getMessage());
+      
+      return null;
+    }
+  }
+	
 }
 	

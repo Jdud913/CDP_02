@@ -104,6 +104,11 @@ public class Server implements Runnable {
 	                {
 	                	gps.insertgps(Id);
 	                }
+	                case 3:
+	                {
+	                	
+	                	gps.sendmsg();
+	                }
                         
                 }
                 
