@@ -24,6 +24,8 @@ public class Mserver implements Runnable {
 	ServerSocket serverSocket;
 	DBmanager dm = new DBmanager();
 	Thread[] threadArr;
+	Search search;
+	
 	
 	 static String getTime() {
 	        String name = Thread.currentThread().getName();
@@ -66,6 +68,8 @@ public class Mserver implements Runnable {
                         + "접속을 했습니다");
                 
                 
+                search = new Search(socket);
+                
                 InputStream in = socket.getInputStream();    
                 DataInputStream dis = new DataInputStream(in);
                 
@@ -83,13 +87,16 @@ public class Mserver implements Runnable {
                 
 	                case 1:
 	                {
-	                	
+	                	search.FindPerson();
 	                }
 	                case 2:
+	                {
+	                	search.FindPerson();
+	                }
                         
                 }
                 
-                if(i <0)
+                if(i  == 0)
                 	break;
                 
                 }

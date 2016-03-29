@@ -29,7 +29,8 @@ public class Search {
 	DataInputStream dis;
 	DataOutputStream dos ;
 	DBmanager dm = new DBmanager();
-	
+	String id = "";
+	String ploc = "";
 	public Search(Socket socket)
 	{
 	      this.socket = socket;
@@ -47,8 +48,20 @@ public class Search {
 	         } 
 	 }
 	
-	public void FindPerson(String id)
+	public void FindPerson() throws IOException
 	{
+		id  = dis.readUTF();
+		ploc = dm.getPlocation(id);
+		
+		while(	ploc.equals("x") || dis.readUTF().equals("stop") )
+		{
+			if(ploc.equals("x"));
+			else
+			{
+				dos.writeUTF(ploc);
+			}
+		}
+	
 		
 	}
 	
@@ -56,4 +69,6 @@ public class Search {
 	{
 	
 	}
+
+	
 }

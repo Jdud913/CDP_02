@@ -45,7 +45,7 @@ public class Server implements Runnable {
     public Server(int num) {
         try {
             
-            serverSocket = new ServerSocket(8051);
+            serverSocket = new ServerSocket(7777);
             System.out.println(getTime() + " 준비중");
             
         	dm.startDatabase();

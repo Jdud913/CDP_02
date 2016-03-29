@@ -158,7 +158,7 @@ public class DBmanager {
 
 	
 	
-	public String getlocation(String id)
+	public String getPlocation(String id)
 	{
 		String location = "";
 		
@@ -167,7 +167,7 @@ public class DBmanager {
 		if(conn == null)
 			return null;
 		
-		String query = "SELECT link FROM userdata WHERE id = ? ";
+		String query = "SELECT location FROM location WHERE id = ? ";
 		
 		pstmt = conn.prepareStatement(query);
 	      
@@ -196,31 +196,8 @@ public class DBmanager {
       return null;
     }
   }
-	public void insertlocation(String id,String location )
-	{	
-		try {
-
-						
-	            String stm = "INSERT INTO location" +
-	            		" (id, passward) " +
-	            		" VALUES(?,?)";
-	            pstmt = conn.prepareStatement(stm);
-	            
-	            pstmt.setString(1, id);
-	            pstmt.setString(2, location);
-	            pstmt.executeUpdate();
-	            
-	            System.out.println("successful inserted");
-
-
-			} catch (SQLException e) {
-
-				System.out.println("something is wrong!");
-				e.printStackTrace();
-				return;
-
-			}
-	}
+	
+	
 	
 	
 	public String getmsg(String bid)
