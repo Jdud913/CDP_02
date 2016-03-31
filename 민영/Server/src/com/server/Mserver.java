@@ -82,25 +82,27 @@ public class Mserver implements Runnable {
 	                int i = Integer.parseInt(dis.readUTF());
 	                System.out.println(i);
                 
-                switch(i)
-                {
+	                switch(i)
+	                {
+	                
+		                case 1:
+		                {
+		                	search.FindPerson();
+		                }
+		                case 2:
+		                {
+		                	search.FindPeople();;
+		                }
+	                        
+	                }
                 
-	                case 1:
-	                {
-	                	search.FindPerson();
-	                }
-	                case 2:
-	                {
-	                	search.FindPerson();
-	                }
-                        
+	                if(i  == 0)
+	                	break;
+                
                 }
                 
-                if(i  == 0)
-                	break;
                 
-                }
-                
+                search.LInit();
                 socket.close();
                
             } catch (IOException e) {

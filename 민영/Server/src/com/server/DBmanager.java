@@ -82,9 +82,7 @@ public class DBmanager {
 				return;
 
 			}
-		
-
-		
+	
 	}
 	
 
@@ -155,7 +153,32 @@ public class DBmanager {
 	      return -1;
 	    }
 	  }
+	public void insertlocation(String id,String location )
+	{	
+		try {
 
+						
+	            String stm = "INSERT INTO location" +
+	            		" (id, location) " +
+	            		" VALUES(?,?)";
+	            pstmt = conn.prepareStatement(stm);
+	            
+	            pstmt.setString(1, id);
+	            pstmt.setString(2, location);
+	            pstmt.executeUpdate();
+	            
+	            System.out.println("successful inserted");
+
+
+			} catch (SQLException e) {
+
+				System.out.println("something is wrong!");
+				e.printStackTrace();
+				return;
+
+			}
+	
+	}
 	
 	
 	public String getPlocation(String id)
@@ -209,7 +232,7 @@ public class DBmanager {
 		if(conn == null)
 			return null;
 		
-		String query = "SELECT link FROM message WHERE bid = ? ";
+		String query = "SELECT msg FROM message WHERE bid = ? ";
 		
 		pstmt = conn.prepareStatement(query);
 	      
@@ -238,6 +261,166 @@ public class DBmanager {
       return null;
     }
   }
+	
+	
+	public String getlocation(String id)
+	{
+		String msg = "";
+		
+	try
+    {
+		if(conn == null)
+			return null;
+		
+		String query = "SELECT location FROM message WHERE id = ? ";
+		
+		pstmt = conn.prepareStatement(query);
+	      
+	    pstmt.setString(1, id);
+		
+	    Statement st = conn.createStatement();
+		ResultSet rs = pstmt.executeQuery();
+                
+      // iterate through the java resultset
+      while (rs.next())
+      {
+    	  msg = rs.getString("msg");
+        
+        // print the results
+        
+      }
+      
+      st.close();
+      return msg;
+    }
+	catch (Exception e)
+    {
+      System.err.println("Got an exception! ");
+      System.err.println(e.getMessage());
+      
+      return null;
+    }
+  }
+	
+	public int locationnum( )
+	{
+		int check  = 0 ;
+		try
+	    {
+			if(conn == null)
+				return -1;
+			
+			String query = "SELECT count(*) FROM location  ";
+			
+			pstmt = conn.prepareStatement(query);
+			
+			Statement st = conn.createStatement();
+			
+			
+			ResultSet rs = pstmt.executeQuery();
+	                
+	      while (rs.next())
+	      {
+	    	  check++;
+	        
+	      }
+	      
+	      st.close();
+	      return check;
+	    }
+		catch (Exception e)
+	    {
+	      System.err.println("Got an exception! ");
+	      System.err.println(e.getMessage());
+	      
+	      return -1;
+	    }
+		
+	}
+	
+	 
+	public String[][] getPeopleL()
+	{
+		
+		int check = locationnum();
+		int count = 0;
+		String [][]loc = new String[check][2];
+		
+	try
+    {
+		if(conn == null)
+			return null;
+		
+		String query = "SELECT id,location FROM location WHERE location != ? ";
+		
+		pstmt = conn.prepareStatement(query);
+	      
+	    pstmt.setString(1, "x");
+		
+	    Statement st = conn.createStatement();
+		ResultSet rs = pstmt.executeQuery();
+                
+      // iterate through the java resultset
+      while (rs.next())
+      {
+    	  loc[count++][0] = rs.getString("id");
+    	  loc[count++][1] = rs.getString("location");
+        
+        // print the results
+        
+      }
+      
+      st.close();
+      return loc;
+    }
+	catch (Exception e)
+    {
+      System.err.println("Got an exception! ");
+      System.err.println(e.getMessage());
+      
+      return null;
+    }
+  }
+	
+	void updatelocation(String id, String location)
+	{
+		try {
+		 String query = "update location set location = ? where id = ?";
+		 pstmt = conn.prepareStatement(query);
+		 pstmt.setString (1, location);
+		 pstmt.setString(2, id);
+	 
+	      // execute the java preparedstatement
+		 pstmt.executeUpdate();
+		} catch (SQLException e) {
+
+			System.out.println("something is wrong!");
+			e.printStackTrace();
+			return;
+
+		}
+	}
+	
+	void endlocation()
+	{
+		try {
+		 String query = "update location set location = ? where location != ? ";
+		 pstmt = conn.prepareStatement(query);
+
+		 pstmt.setString(1, "x");
+		 pstmt.setString(2, "x");
+	 
+	      // execute the java preparedstatement
+		 pstmt.executeUpdate();
+		} catch (SQLException e) {
+
+			System.out.println("something is wrong!");
+			e.printStackTrace();
+			return;
+
+		}
+	}
+	
 	
 }
 	

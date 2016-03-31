@@ -65,10 +65,40 @@ public class Search {
 		
 	}
 	
-	public void FindPeople()
+	public void FindPeople() throws IOException
 	{
-	
+		int count = dm.locationnum();
+		String temp = "";
+		String [][]loc = new String[count][2];
+		
+		while(true)
+		{
+			if(dis.readUTF().equals("stop"))
+				break;
+			
+			loc = dm.getPeopleL();
+			
+			for(int i = 0 ; i <count ; i++)
+			{
+				if(!loc[i][1].equals("x"))
+				{
+					temp = loc[i][0]+"/"+loc[i][1];
+					dos.writeUTF(temp);
+				}
+			}
+			try{
+				Thread.sleep(500);
+			}catch(InterruptedException e)
+			{
+				System.out.println(e.getMessage());
+			}
+			
+		}
 	}
 
+	public void LInit()
+	{
+		dm.endlocation();
+	}
 	
 }

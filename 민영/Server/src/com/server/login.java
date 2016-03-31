@@ -87,10 +87,9 @@ public class login {
            }
            else if (n == 1)
            {
-	           	System.out.println( second + " "  + third + " "  + forth + " "  + fifth + " "  + sixth );
+	           	System.out.println( second + " "  + third  );
 	           	Id = second;
 	           	passwd = third;
-	           	phone = forth;
 	           	int confirm = dm.idExist(second);
 	           	
 	           	if(confirm == 1)
@@ -115,6 +114,19 @@ public class login {
            
 	   }
 	   
+	   public void login() throws IOException
+	   {
+		   int check = 0;
+		   split(dis.readUTF());
+		   
+		   check = dm.matchingIdPasswd(second, third);
+		   
+		   if(check == 1)
+			   out2.println("login complete");
+		   else
+			   out2.println("아이뒤와 비밀번호가 일치하지 않습니다.");
+		   
+	   }
 	   
 	   public int split(String buffer)
 	    {

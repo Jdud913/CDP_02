@@ -102,12 +102,18 @@ public class Server implements Runnable {
 	                }
 	                case 2:
 	                {
-	                	gps.insertgps(Id);
+	                	log.login();
+	                	break;
 	                }
 	                case 3:
 	                {
-	                	
+	                	gps.insertgps(Id);
+	                	break;
+	                }
+	                case 4:
+	                {
 	                	gps.sendmsg();
+	                	break;
 	                }
                         
                 }
