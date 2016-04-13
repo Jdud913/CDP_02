@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
         LatLng currentPosition = new LatLng(location.getLatitude(), location.getLongitude());
 
         //currentPosition 위치로 카메라 중심을 옮기고 화면 줌을 조정한다. 줌범위는 2~21, 숫자클수록 확대
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom( currentPosition, 17));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(currentPosition, 17));
         map.animateCamera(CameraUpdateFactory.zoomTo(17), 2000, null);
 
         //마커 추가
