@@ -1,69 +1,91 @@
 package com.example.hoyoung.fairy_commie_admin;
 
-import android.app.Activity;
-import android.location.Location;
+import android.graphics.Point;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
-    static final LatLng SEOUL = new LatLng( 37.56, 126.97);
-    private GoogleMap map;
+    private GoogleMap mGoogleMap;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
 
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
-        map = mapFragment.getMap();
+        // BitmapDescriptorFactory 생성하기 위한 소스
+        MapsInitializer.initialize(getApplicationContext());
 
-        //현재 위치로 가는 버튼 표시
-        map.setMyLocationEnabled(true);
-        //map.moveCamera(CameraUpdateFactory.newLatLngZoom( SEOUL, 15));//초기 위치...수정필요
-
-        MyLocation.LocationResult locationResult = new MyLocation.LocationResult() {
-            @Override
-            public void gotLocation(Location location) {
-
-                String msg = "lon: "+location.getLongitude()+" -- lat: "+location.getLatitude();
-                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-                drawMarker(location);
-
-            }
-        };
-
-        MyLocation myLocation = new MyLocation();
-        myLocation.getLocation(getApplicationContext(), locationResult);
-
+        init();
     }
 
+    /** Map 클릭시 터치 이벤트 */
+    public void onMapClick(LatLng point) {
 
-    private void drawMarker(Location location) {
+        // 현재 위도와 경도에서 화면 포인트를 알려준다
+        Point screenPt = mGoogleMap.getProjection().toScreenLocation(point);
 
-        //기존 마커 지우기
-        map.clear();
-        LatLng currentPosition = new LatLng(location.getLatitude(), location.getLongitude());
+        // 현재 화면에 찍힌 포인트로 부터 위도와 경도를 알려준다.
+        LatLng latLng = mGoogleMap.getProjection().fromScreenLocation(screenPt);
 
-        //currentPosition 위치로 카메라 중심을 옮기고 화면 줌을 조정한다. 줌범위는 2~21, 숫자클수록 확대
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(currentPosition, 17));
-        map.animateCamera(CameraUpdateFactory.zoomTo(17), 2000, null);
+        Log.d("맵좌표", "좌표: 위도(" + String.valueOf(point.latitude) + "), 경도("
+                + String.valueOf(point.longitude) + ")");
+        Log.d("화면좌표", "화면좌표: X(" + String.valueOf(screenPt.x) + "), Y("
+                + String.valueOf(screenPt.y) + ")");
+    }
 
-        //마커 추가
-        map.addMarker(new MarkerOptions()
-                .position(currentPosition)
-                .snippet("Lat:" + location.getLatitude() + "Lng:" + location.getLongitude())
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
-                .title("현재위치"));
+    /**
+     * 초기화
+     * @author
+     */
+    private void init() {
+
+        GooglePlayServicesUtil.isGooglePlayServicesAvailable(MainActivity.this);
+        mGoogleMap = ((SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map)).getMap();
+
+        // 맵의 이동
+        //mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
+
+        GpsInfo gps = new GpsInfo(MainActivity.this);
+        // GPS 사용유무 가져오기
+        if (gps.isGetLocation()) {
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+
+            // Creating a LatLng object for the current location
+            LatLng latLng = new LatLng(latitude, longitude);
+
+
+            // 마커 설정.
+            MarkerOptions optFirst = new MarkerOptions();
+            //optFirst.position(latLng);// 위도 • 경도
+            //optFirst.title("Current Position");// 제목 미리보기
+            //optFirst.snippet("Snippet");
+
+            Marker mk = mGoogleMap.addMarker(optFirst.position(latLng).title("현재위치"));
+            //optFirst.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
+
+            // Showing the current location in Google Map
+            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+
+            // Map 을 zoom 합니다.
+            mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(18));
+
+
+            //mGoogleMap.addMarker(optFirst).showInfoWindow();
+        }
     }
 }
