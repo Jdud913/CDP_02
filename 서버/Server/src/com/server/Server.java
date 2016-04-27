@@ -68,9 +68,6 @@ public class Server implements Runnable {
             try {
             	String Id = "";
             	String passwd = "";
-            	String phone = "";
-            	String mom = "";
-            	String flag = "";	
                 System.out.println(getTime() + " 활성화 됨.");
                 Socket socket = serverSocket.accept();
                 System.out.println(getTime() + " " + socket.getInetAddress()
@@ -83,12 +80,15 @@ public class Server implements Runnable {
                 InputStream in = socket.getInputStream();    
                 DataInputStream dis = new DataInputStream(in);
                 
+                OutputStream out = socket.getOutputStream();  
+                DataOutputStream dos = new DataOutputStream(out); 
+                
              	BufferedWriter networkWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
              	PrintWriter out2 = new PrintWriter(networkWriter, true);
              	
                 while(true)
                 {
-	
+                	dos.writeUTF("번호를 주세요");
 	                int i = Integer.parseInt(dis.readUTF());
 	                System.out.println(i);
                 

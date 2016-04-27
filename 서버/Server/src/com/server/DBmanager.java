@@ -64,7 +64,7 @@ public class DBmanager {
 
 						
 	            String stm = "INSERT INTO userdata" +
-	            		" (id, passward) " +
+	            		" (id, passwd) " +
 	            		" VALUES(?,?)";
 	            pstmt = conn.prepareStatement(stm);
 	            
