@@ -68,7 +68,7 @@ public class MyService extends Service {
             Notifi_M.notify( 777 , Notifi);
 
             //토스트 띄우기
-            Toast.makeText(MyService.this, "비콘식별자 2258 \n: 위험지역1에 진입하였습니다", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MyService.this, "서비스 작동중", Toast.LENGTH_SHORT).show();
         }
     }
 
