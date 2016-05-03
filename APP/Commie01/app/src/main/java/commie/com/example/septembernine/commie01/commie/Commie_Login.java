@@ -136,11 +136,11 @@ public class Commie_Login extends Activity {
                 //자식으로 가는 화면 넘기기
                 if (flag.equals("4"))
                 {
-                    Intent i = new Intent(Commie_Login.this, Commie_Beacon01.class);
-                    // id값 넘겨주기
-                    i.putExtra("id_u",Id);
-                    startActivity(i);
-                    finish();
+//                    Intent i = new Intent(Commie_Login.this, Commie_Beacon01.class);
+//                    // id값 넘겨주기
+//                    i.putExtra("id_u",Id);
+//                    startActivity(i);
+//                    finish();
                 }
                 else
                 {

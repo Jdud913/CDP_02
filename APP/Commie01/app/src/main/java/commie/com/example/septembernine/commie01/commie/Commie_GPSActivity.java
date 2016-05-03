@@ -1,4 +1,4 @@
-package com.example.hoyoung.mylocation;
+package commie.com.example.septembernine.commie01.commie;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,8 +7,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/** GPS ???????????? */
-public class MainActivity extends Activity {
+import commie.com.example.septembernine.commie01.R;
+
+/**
+ * Created by septembernine on 2016. 5. 3..
+ */
+public class Commie_GPSActivity extends Activity {
+
 
     private Button btnShowLocation;
     private TextView txtLat;
@@ -20,18 +25,18 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_commie_gpxactivity);
 
         btnShowLocation = (Button) findViewById(R.id.btn_start);
         txtLat = (TextView) findViewById(R.id.Latitude);
         txtLon = (TextView) findViewById(R.id.Longitude);
 
-        // GPS ?????????????????? ???????????????????? ???????????? ?????????? ?????????????? ?????????
+        // GPS
         btnShowLocation.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
-                gps = new GpsInfo(MainActivity.this);
-                // GPS ????????????????????? ????????????????????????
+                gps = new GpsInfo(Commie_GPSActivity.this);
+                // GPS
                 if (gps.isGetLocation()) {
 
                     double latitude = gps.getLatitude();
@@ -40,15 +45,15 @@ public class MainActivity extends Activity {
                     txtLat.setText(String.valueOf(latitude));
                     txtLon.setText(String.valueOf(longitude));
 
+                    String msg = "Latitude : " + latitude + "\nlongitude: " + longitude;
                     Toast.makeText(
-                            getApplicationContext(),
-                            "??????????????? ???????? - \n????????????: " + latitude + "\n??????: " + longitude,
-                            Toast.LENGTH_LONG).show();
+                            getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 } else {
-                    // GPS ?????? ????????????????? ????????????????????
+                    // GPS
                     gps.showSettingsAlert();
                 }
             }
         });
     }
+
 }
