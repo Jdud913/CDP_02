@@ -24,16 +24,20 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import commie.com.example.septembernine.commie01.R;
 
 public class Commie_Beacon extends Activity implements RECOServiceConnectListener, RECORangingListener {
-
     private static final String TAG = "DD";
 
-    private int num_of_beacon = 13;
     private RECOBeaconManager recoManager;
     private ArrayList<RECOBeaconRegion> rangingRegions;
+
+    List<String> uid;
+    List<String> major;
+    List<String> minor;
+
 
     public static final String RECO_UUID = "24DDF411-8CF1-440C-87CD-E368DAF9C93E";
     public static final boolean SCAN_RECO_ONLY = true;
@@ -47,7 +51,6 @@ public class Commie_Beacon extends Activity implements RECOServiceConnectListene
 
     int[] check_index = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
     int[] On_or_Off = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
-
     int index = -1;
     double temp;
 
@@ -66,11 +69,10 @@ public class Commie_Beacon extends Activity implements RECOServiceConnectListene
     String id;
 
     int t = 1;
-    private String ip = "192.168.0.9"; // IP
-    private int port = 8051; // PORT번호
+    private String ip = "20.20.3.154"; // IP
+    private int port = 7777; // PORT번호
 
-
-
+    private GpsInfo gps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,16 +80,21 @@ public class Commie_Beacon extends Activity implements RECOServiceConnectListene
 
         setContentView(R.layout.activity_commie_beacon);
         Intent i = getIntent();
-
         id = i.getExtras().getString("id_u");
 
+        //////////
+        uid = new ArrayList<String>();
+        major = new ArrayList<String>();
+        minor = new ArrayList<String>();
+        //////////
 
         handler = new TextHandler();
-        Log.d("sequen :", "1");
+        Log.d("sequen :" , "1");
 
         if(thread != null && thread.isAlive())
             thread.interrupt();
         Log.d("sequen :" , "2");
+
         thread = new MainThread();
         thread.setDaemon(true);
         thread.start();
@@ -95,11 +102,11 @@ public class Commie_Beacon extends Activity implements RECOServiceConnectListene
         Log.d("sequen :", "5");
         packName = this.getPackageName();
 
-
         //beacon감지 시작
         recoManager = RECOBeaconManager.getInstance(this, true, true);
         recoManager.bind(this);
         recoManager.setRangingListener(this);
+
     }
 
 //    @Override
@@ -114,27 +121,25 @@ public class Commie_Beacon extends Activity implements RECOServiceConnectListene
 //        }
 //    }
 
-    //  연결이 되었을때 제공되는 서비스 부분
+//  연결이 되었을때 제공되는 서비스 부분
     @Override
     public void onServiceConnect() {
-//      리스트 생성해서 비콘 값 저장
+//  리스트 생성해서 비콘 값 저장
         rangingRegions = new ArrayList<RECOBeaconRegion>();
-//      비콘의UUID, Major, 이름
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1978, "0"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1987, "1"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 2528, "2"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1983, "3"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1988, "4"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1989, "5"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1990, "6"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1991, "7"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1992, "8"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1993, "9"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1982, "10"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 2529, "11"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 2532, "12"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1989, "1"));
-        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1990, "0"));
+//  비콘의UUID, Major, 이름
+        try{
+            Thread.sleep(1000);
+        }catch (InterruptedException e){
+
+        }
+        for(int i=0; i<uid.size(); i++) {
+            rangingRegions.add(new RECOBeaconRegion(uid.get(i), Integer.parseInt(major.get(i)), Integer.parseInt(minor.get(i)), Integer.toString(i)));
+
+        }
+//        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1979, "0"));
+//        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1984, "1"));
+//        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1987, "2"));
+//        rangingRegions.add(new RECOBeaconRegion("24DDF411-8CF1-440C-87CD-E368DAF9C93E", 501, 1995, "3"));
 
 
         for (RECOBeaconRegion region : rangingRegions) {
@@ -154,6 +159,100 @@ public class Commie_Beacon extends Activity implements RECOServiceConnectListene
         // TODO Auto-generated method stub
     }
 
+
+    //1초마다 비콘변화 감지
+    @Override
+    public void didRangeBeaconsInRegion(Collection<RECOBeacon> arg0, RECOBeaconRegion arg1) {
+        // TODO Auto-generated method stub
+        for (RECOBeacon r_beacon : arg0) {
+            //우리 비콘인지 확인
+            if (arg1.getMinor() == 1979) {
+                index = 0;
+            }else if (arg1.getMinor() == 1984) {
+                index = 1;
+            }else if (arg1.getMinor() == 1987) {
+                index = 2;
+            }else if (arg1.getMinor() == 1995) {
+                index = 3;
+            }
+
+//       Toast.makeText(Commie_Beacon.this, uid.get(0)+" "+major.get(0)+" "+minor.get(0), Toast.LENGTH_SHORT).show();
+         Toast.makeText(Commie_Beacon.this, " "+index, Toast.LENGTH_SHORT).show();
+
+            if(index == 3){
+
+
+            }
+
+            if (index != -1) {
+                rssi_b[index]   = r_beacon.getRssi();
+                tx_Power[index] = r_beacon.getTxPower();
+                Accuracy[index] = r_beacon.getAccuracy();
+
+                temp = calculateDistance(tx_Power[index], rssi_b[index]);
+
+                if(temp == -1){
+                    temp = Accuracy[index];
+                }
+
+                if( temp < 3 && index == 3 ){
+                    check_index[index]++;
+                    if (check_index[index] == 3) {
+                        if (On_or_Off[index] == -1) {
+                            gps = new GpsInfo(Commie_Beacon.this);
+                            if (gps.isGetLocation()) {
+                                double latitude = gps.getLatitude();
+                                double longitude = gps.getLongitude();
+
+                                String mygps = id+"/"+latitude+"/"+longitude+"/";
+                                try {
+                                    dos.writeUTF("3");
+                                    dos.flush();
+                                    dos.writeUTF(mygps);
+                                    dos.flush();
+                                } catch (IOException e) {
+                                e.printStackTrace();
+                                }
+                            } else {
+                                // GPS
+                                gps.showSettingsAlert();
+                            }
+                            On_or_Off[index] = 0;
+                            index = -1;
+                        }
+                  }
+                }
+            }
+
+        }
+    }
+
+    protected static double calculateDistance(int txPower, int rssi) {
+        if (rssi == 0) {
+            return -1.0; // if we cannot determine distance, return -1.
+        }
+        double ratio = rssi*1.0/txPower;
+        if (ratio < 1.0) {
+            return Math.pow(ratio, 10);
+        }else{
+            return -1.0;
+        }
+    }
+
+    @Override
+    public void rangingBeaconsDidFailForRegion(RECOBeaconRegion arg0, RECOErrorCode arg1) {
+        // TODO Auto-generated method stub
+    }
+
+    class TextHandler extends Handler{
+        @Override
+        public void handleMessage(Message msg) {
+            Bundle bundle = msg.getData();
+            html = bundle.getString("text");
+            //  tv5.setText(html);
+        }
+    }
+
 //    public void Thread(){
 //        Runnable task = new Runnable(){
 //            public void run(){
@@ -164,7 +263,6 @@ public class Commie_Beacon extends Activity implements RECOServiceConnectListene
 //                    try {
 //                        Thread.sleep(1000);
 //                    } catch (InterruptedException e) {
-//                        // TODO Auto-generated catch block
 //                        e.printStackTrace();
 //                    }
 //                }
@@ -174,148 +272,12 @@ public class Commie_Beacon extends Activity implements RECOServiceConnectListene
 //        thread.start();
 //    }
 
-
-
-    //  1초마다 비콘변화 감지
-    @Override
-    public void didRangeBeaconsInRegion(Collection<RECOBeacon> arg0, RECOBeaconRegion arg1) {
-        for (RECOBeacon r_beacon : arg0) {
-
-            //우리 비콘인지 확인
-            if (arg1.getMinor() == 1978) {
-
-                index = 0;
-
-            } else if (arg1.getMinor() == 1987) {
-
-                index = 1;
-            }
-            else if (arg1.getMinor() == 2528) {
-
-                index = 2;
-            }
-//            } else if (arg1.getMinor() == 1983) {
-//
-//                index = 3;
-//
-//            } else if (arg1.getMinor() == 1988) {
-//
-//                index = 4;
-//
-//            } else if (arg1.getMinor() == 1989) {
-//
-//                index = 5;
-//
-//            } else if (arg1.getMinor() == 1990) {
-//
-//                index = 6;
-//
-//            } else if (arg1.getMinor() == 1991) {
-//
-//                index = 7;
-//
-//            } else if (arg1.getMinor() == 1992) {
-//
-//                index = 8;
-//
-//            } else if (arg1.getMinor() == 1993) {
-//
-//                index = 9;
-//
-//            } else if (arg1.getMinor() == 1928) {
-//
-//                index = 10;
-//
-//            } else if (arg1.getMinor() == 1929) {
-//
-//                index = 11;
-//
-//            } else if (arg1.getMinor() == 1932) {
-//
-//                index = 12;
-//
-//            }
-
-            if (index != -1) {
-                rssi_b[index] = r_beacon.getRssi();
-                tx_Power[index] = r_beacon.getTxPower();
-                Accuracy[index] = r_beacon.getAccuracy();
-
-                temp = calculateDistance(tx_Power[index], rssi_b[index]);
-
-                if(temp == -1){
-                    temp = Accuracy[index];
-                }
-
-//                tv.setText(tv.getText() + "" +index + " : " + temp + "\n");
-                if(temp < 3){
-
-                    check_index[index]++;
-
-                    if (check_index[index] == 3) {
-
-                        if (On_or_Off[index] == -1) {
-
-
-                            String beacon_n = Integer.toString(index);
-                            try {
-                                dos.writeUTF(beacon_n);
-                                dos.flush();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-
-                            Toast toast = Toast.makeText(Commie_Beacon.this, " " + index , Toast.LENGTH_SHORT);
-                            toast.show();
-
-                            On_or_Off[index] = 0;
-                            index = -1;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
-    protected static double calculateDistance(int txPower, int rssi) {
-        if (rssi == 0) {
-            return -1.0; // if we cannot determine distance, return -1.
-        }
-
-        double ratio = rssi*1.0/txPower;
-
-        if (ratio < 1.0) {
-            return Math.pow(ratio, 10);
-        }else{
-            return -1.0;
-        }
-
-    }
-
-    @Override
-    public void rangingBeaconsDidFailForRegion(RECOBeaconRegion arg0, RECOErrorCode arg1) {
-        // TODO Auto-generated method stub
-
-    }
-
-    class TextHandler extends Handler {
-
-        @Override
-        public void handleMessage(Message msg) {
-
-            Bundle bundle = msg.getData();
-            html = bundle.getString("text");
-            //  tv5.setText(html);
-            //  tv5.setText(html);
-        }
-
-    }
-
-
+//    public void set_resouce(int index){
+//        resName = "@raw/m" + index;
+//        resID = getResources().getIdentifier(resName, "raw", packName);
+//    }
 
     public void setSocket(String ip, int port) throws IOException {
-
         try {
             socket = new Socket(ip, port);
             networkReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -325,54 +287,43 @@ public class Commie_Beacon extends Activity implements RECOServiceConnectListene
             System.out.println(e);
             e.printStackTrace();
         }
-
     }
 
-
-
     class MainThread extends  Thread{
-
-
         public void run()
         {
             try{
-                setSocket(ip,port);
-
+                setSocket(ip, port);
                 String line = null;
                 Log.w("ChattingStart", "Start Thread");
 
-                dos.writeUTF("2");
+                dos.writeUTF("4");
                 dos.flush();
-                dos.writeUTF(id);
-                dos.flush();
+//                dos.writeUTF(id);
+//                dos.flush();
 
                 while (!MainThread.interrupted()) {
                     Log.w("Chatting is running", "chatting is running");
                     //networkReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                     line = networkReader.readLine();//dis.readUTF();
 
+                    uid.add(line.split("/")[0]);
+                    major.add(line.split("/")[1]);
+                    minor.add(line.split("/")[2]);
+
                     //line = dis.readUTF();
                     Log.w("send message", "please");
                     //html = line;
-
                     sendText(line);
-
                 }
-
-
             }catch ( IOException e1)
             {
                 e1.printStackTrace();
             }catch (Exception e) {
                 String err = e.getMessage();
                 Log.w("error message", err);
-
             }
-
-
         }
-
-
         private void sendText(String text){
             Message msg = handler.obtainMessage();
             Bundle bundle = new Bundle();
@@ -382,6 +333,5 @@ public class Commie_Beacon extends Activity implements RECOServiceConnectListene
             handler.sendMessage(msg);
         }
     }
-
 
 }

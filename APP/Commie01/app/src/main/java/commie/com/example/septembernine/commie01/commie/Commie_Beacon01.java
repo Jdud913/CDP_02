@@ -145,9 +145,8 @@ public class Commie_Beacon01 extends Activity{
      *
      * 안드로이드 API 23 (마시멜로우)이상 버전부터, 정상적으로 RECO SDK를 사용하기 위해서는
      * 위치 권한 (ACCESS_COARSE_LOCATION 혹은 ACCESS_FINE_LOCATION)을 요청해야 합니다.
-     *
-     * 본 샘플 프로젝트에서는 "ACCESS_COARSE_LOCATION"을 요청하지만, 필요에 따라 "ACCESS_FINE_LOCATION"을 요청할 수 있습니다.
-     *
+     * 본 샘플 프로젝트에서는 "ACCESS_COARSE_LOCATION"을 요청하지만,
+     * 필요에 따라 "ACCESS_FINE_LOCATION"을 요청할 수 있습니다.
      * 당사에서는 ACCESS_COARSE_LOCATION 권한을 권장합니다.
      *
      */
