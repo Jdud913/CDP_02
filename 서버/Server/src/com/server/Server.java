@@ -88,7 +88,8 @@ public class Server implements Runnable {
              	
                 while(true)
                 {
-                	dos.writeUTF("번호를 주세요");
+                	//dos.writeUTF("번호를 주세요");
+                	System.out.println("번호를 주세요");
 	                int i = Integer.parseInt(dis.readUTF());
 	                System.out.println(i);
                 

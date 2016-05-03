@@ -64,9 +64,10 @@ public class login {
 	   {
 		  split(dis.readUTF());                  
            
-	      System.out.println( second + " "  + third  );
+	      
 	      Id = second;
 	      passwd = third;
+	      
 	      int confirm = dm.idExist(second);
 	           	
 	      if(confirm == 1)
@@ -89,17 +90,23 @@ public class login {
 	   {
 		   int check = 0;
 		   split(dis.readUTF());
-		   
+		   System.out.println(second + "/" +third);
 		   check = dm.matchingIdPasswd(second, third);
 		   
 		   if(check == 1)
 		   {
-			   dos.writeUTF("login complete");
+			   //dos.writeUTF("1/4");
+			   System.out.println("1/4");
+			   out2.println("1"+"/"+"4");
+			   out2.flush();
 			   return second;
 		   }
 		   else
 		   {
-			   dos.writeUTF("아이뒤와 비밀번호가 일치하지 않습니다.");
+			   //dos.writeUTF("1/5");
+			   out2.println("1"+"/"+"5");
+			   out2.flush();
+			   System.out.println("1/5");
 			   return null;
 		   }
 		   
@@ -111,10 +118,6 @@ public class login {
 	    	
 	    		 second = buffer.split("/")[0];
 	    		 third  = buffer.split("/")[1];
-	    		 
-	    	
-	    	
-
 	    }
 
 }

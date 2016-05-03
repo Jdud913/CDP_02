@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.sql.*;
 
 //import com.server.Server.FileServerClient;
@@ -95,6 +96,38 @@ public class DBmanager {
 				return -1;
 			
 			String query = "SELECT count(*) FROM userdata WHERE id = ? ";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,a);
+			Statement st = conn.createStatement();		
+			ResultSet rs = pstmt.executeQuery();
+	                
+	      while (rs.next())
+	      {
+	    	  check = rs.getInt(1);	        
+	      }
+	      
+	      st.close();
+	      return check;
+	    }
+		catch (Exception e)
+	    {
+	      System.err.println("Got an exception! ");
+	      System.err.println(e.getMessage());
+	      
+	      return -1;
+	    }
+		
+	}
+	
+	public int beacon_num(String a )
+	{
+		int check  = 0 ;
+		try
+	    {
+			if(conn == null)
+				return -1;
+			
+			String query = "SELECT count(*) FROM message";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1,a);
 			Statement st = conn.createStatement();		
@@ -420,6 +453,47 @@ public class DBmanager {
 
 		}
 	}
+	
+	
+	public void getbeacon(List<String> id ,List<String> ma ,List<String> mi )
+	{
+
+		
+	try
+    {
+		if(conn == null)
+			return;
+		
+		String query = "SELECT uid , major , minor  FROM beacon  ";
+		
+		pstmt = conn.prepareStatement(query);
+	    
+		
+	    Statement st = conn.createStatement();
+		ResultSet rs = pstmt.executeQuery();
+                
+      // iterate through the java resultset
+      while (rs.next())
+      {
+    	  id.add(rs.getString("uid"));
+    	  ma.add(rs.getString("major"));
+    	  mi.add(rs.getString("minor"));
+    	  
+        
+        // print the results
+        
+      }
+      
+      st.close();
+    }
+	catch (Exception e)
+    {
+      System.err.println("Got an exception! ");
+      System.err.println(e.getMessage());
+      
+      return;
+    }
+  }
 	
 	
 }

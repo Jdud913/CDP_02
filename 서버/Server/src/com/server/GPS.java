@@ -18,7 +18,9 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class GPS {
@@ -33,6 +35,11 @@ public class GPS {
 	String location = "";
 	String msg = "";
 	String bid = "";
+	List<String> uid;
+	List<String> major;
+	List<String> minor;
+	String second;
+	String third;
 	
 	public GPS(Socket socket)
 	{
@@ -49,25 +56,63 @@ public class GPS {
 	         } catch (IOException e) {
 	            e.printStackTrace();
 	         } 
+	      uid = new ArrayList<String>();
+	      major = new ArrayList<String>();
+	      minor = new ArrayList<String>();
+	      
+	      second = "";
+	      third = "";
 	 }
 	
 	
 	public void insertgps(String id) throws IOException
 	{
-		location = dis.readUTF();
-		dm.insertlocation(id, location);
+		
+		split(dis.readUTF());
+		dm.insertlocation(second , third);
 	}
 	
 	public void sendmsg()throws IOException
 	{
-		bid = dis.readUTF();
-		msg  = dm.getmsg(bid);
-		dos.writeUTF(msg);
+		dm.getbeacon(uid, major, minor);
+		
+		
+		try {
+ 			
+ 			
+ 			for(int i = 0 ; i < uid.size(); i++)
+ 			{
+ 				out2.println(uid.get(i)+"/"+major.get(i) +"/"+minor.get(i) + "/");
+ 				System.out.println(uid.get(i)+"/"+major.get(i) +"/"+minor.get(i));
+ 				out2.flush();
+ 				Thread.sleep(50);
+ 				/*
+ 				out2.println(major.get(i));
+ 				System.out.println(major.get(i));
+ 				out2.flush();
+ 				Thread.sleep(50);
+				out2.println(minor.get(i));
+				System.out.println(minor.get(i));
+				out2.flush();
+				Thread.sleep(50);*/
+ 			}
+		
+		}catch(InterruptedException e){
+				System.out.println(e.getMessage()); 
+		}
 	}
 	
 	public void closegps(String id)
 	{
 		dm.insertlocation(id, "x");
 	}
+	
+	public void split(String buffer)
+    {
+    	
+    	
+    		 second = buffer.split("/")[0];
+    		 third  = buffer.split("/")[1];
+    }
 	
 }
