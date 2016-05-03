@@ -43,17 +43,17 @@ public class Commie_Login extends Activity {
     private int port = 7777; // PORT번호
 
     // 액티비티넘어갈 때마다 죽이고 새로 살리고
-    @Override
-    protected void onStop() {
-        super.onStop();
-        try {
-            socket.close();
-            if(thread != null && thread.isAlive())
-                thread.interrupt();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        try {
+//            socket.close();
+//            if(thread != null && thread.isAlive())
+//                thread.interrupt();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,32 +78,32 @@ public class Commie_Login extends Activity {
         bt_OK.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
 
-//                Intent i = new Intent(Commie_Login.this, Commie_Beacon01.class);
-//                startActivity(i);
-//                finish();
+                Intent i = new Intent(Commie_Login.this, Commie_Beacon01.class);
+                startActivity(i);
+                finish();
 
 //                [민영 작업 부분]
-                if(!et.getText().toString().equals("") && !et1.getText().toString().equals("") ) {
-
-                    Id = et.getText().toString();
-                    pw = et1.getText().toString();
-
-                    String sum = (Id + "/" + pw);
-
-                    try {
-                        dos.writeUTF("2");
-                        dos.flush();
-                        dos.writeUTF(sum);
-                        dos.flush();
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                else
-                {
-                    Toast.makeText(Commie_Login.this, "모든 항목을 입력하세요", Toast.LENGTH_SHORT).show();
-                }
+//                if(!et.getText().toString().equals("") && !et1.getText().toString().equals("") ) {
+//
+//                    Id = et.getText().toString();
+//                    pw = et1.getText().toString();
+//
+//                    String sum = (Id + "/" + pw);
+//
+//                    try {
+//                        dos.writeUTF("2");
+//                        dos.flush();
+//                        dos.writeUTF(sum);
+//                        dos.flush();
+//
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//                else
+//                {
+//                    Toast.makeText(Commie_Login.this, "모든 항목을 입력하세요", Toast.LENGTH_SHORT).show();
+//                }
 
            }
         });
