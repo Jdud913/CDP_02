@@ -62,7 +62,7 @@ public class Commie_Beacon01 extends Activity{
                 startService(intent);
             }
         });
-
+        Log.w("1", "Start 1");
 
         btnEnd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,13 +142,6 @@ public class Commie_Beacon01 extends Activity{
     }
 
     /**
-     * In order to use RECO SDK for Android API 23 (Marshmallow) or higher,
-     * the location permission (ACCESS_COARSE_LOCATION or ACCESS_FINE_LOCATION) is required.
-     *
-     * This sample project requests "ACCESS_COARSE_LOCATION" permission only,
-     * but you may request "ACCESS_FINE_LOCATION" permission depending on your application.
-     *
-     * "ACCESS_COARSE_LOCATION" permission is recommended.
      *
      * 안드로이드 API 23 (마시멜로우)이상 버전부터, 정상적으로 RECO SDK를 사용하기 위해서는
      * 위치 권한 (ACCESS_COARSE_LOCATION 혹은 ACCESS_FINE_LOCATION)을 요청해야 합니다.

@@ -78,32 +78,32 @@ public class Commie_Login extends Activity {
         bt_OK.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
 
-//                Intent i = new Intent(Commie_Login.this, Commie_Beacon01.class);
-//                startActivity(i);
-//                finish();
+                Intent i = new Intent(Commie_Login.this, Commie_Beacon01.class);
+                startActivity(i);
+                finish();
 
 //                [민영 작업 부분]
-                if(!et.getText().toString().equals("") && !et1.getText().toString().equals("") ) {
-
-                    Id = et.getText().toString();
-                    pw = et1.getText().toString();
-
-                    String sum = (Id + "/" + pw);
-
-                    try {
-                        dos.writeUTF("2");
-                        dos.flush();
-                        dos.writeUTF(sum);
-                        dos.flush();
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                else
-                {
-                    Toast.makeText(Commie_Login.this, "모든 항목을 입력하세요", Toast.LENGTH_SHORT).show();
-                }
+//                if(!et.getText().toString().equals("") && !et1.getText().toString().equals("") ) {
+//
+//                    Id = et.getText().toString();
+//                    pw = et1.getText().toString();
+//
+//                    String sum = (Id + "/" + pw);
+//
+//                    try {
+//                        dos.writeUTF("2");
+//                        dos.flush();
+//                        dos.writeUTF(sum);
+//                        dos.flush();
+//
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//                else
+//                {
+//                    Toast.makeText(Commie_Login.this, "모든 항목을 입력하세요", Toast.LENGTH_SHORT).show();
+//                }
 
            }
         });
@@ -136,11 +136,11 @@ public class Commie_Login extends Activity {
                 //자식으로 가는 화면 넘기기
                 if (flag.equals("4"))
                 {
-                    Intent i = new Intent(Commie_Login.this, Commie_Beacon01.class);
-                    // id값 넘겨주기
-                    i.putExtra("id_u",Id);
-                    startActivity(i);
-                    finish();
+//                    Intent i = new Intent(Commie_Login.this, Commie_Beacon01.class);
+//                    // id값 넘겨주기
+//                    i.putExtra("id_u",Id);
+//                    startActivity(i);
+//                    finish();
                 }
                 else
                 {
