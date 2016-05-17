@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.perples.recosample.MainActivity"
+    android:id="@+id/mainLayout">
+
+    <TextView
+        android:id="@+id/monitoringToggleButtonLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/background_monitoring"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ToggleButton
+        android:id="@+id/backgroundMonitoringToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="ON"
+        android:textOff="OFF"
+        android:onClick="onMonitoringToggleButtonClicked"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/rangingButton" />
+
+    <TextView
+        android:id="@+id/rangingToggleButtonLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:text="@string/background_ranging"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/backgroundMonitoringToggleButton"
+        android:layout_alignStart="@+id/monitoringToggleButtonLabel" />
+
+    <ToggleButton
+        android:id="@+id/backgroundRangingToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="ON"
+        android:textOff="OFF"
+        android:onClick="onRangingToggleButtonClicked"
+        android:layout_alignBottom="@+id/rangingToggleButtonLabel"
+        android:layout_alignStart="@+id/backgroundMonitoringToggleButton" />
+
+    <Button
+        android:id="@+id/monitoringButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_monitoring"
+        android:onClick="onButtonClicked"
+        android:layout_below="@+id/backgroundRangingToggleButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <Button
+        android:id="@+id/rangingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_ranging"
+        android:onClick="onButtonClicked"
+        android:layout_below="@+id/monitoringButton"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Service 실행"
+        android:id="@+id/bnt_start"
+        android:onClick="btnStart"
+        android:layout_above="@+id/bnt_End"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Service 종료"
+        android:id="@+id/bnt_End"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="57dp" />
+</RelativeLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="commie.com.example.septembernine.commie01">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".commie.Commie_Intro"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".commie.Commie_GPSActivity"/>
+        <activity android:name=".commie.Commie_Beacon"/>
+        <activity android:name=".commie.Commie_Beacon01"/>
+        <activity android:name=".commie.Commie_Temp"/>
+        <activity android:name=".commie.Commie_Bluetooth"/>
+        <activity android:name=".commie.Commie_Login"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name=".commie.Commie_Join"
+            android:inputType="textUri"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+
+
+
+        <service android:name=".reco.RecoBackgroundMonitoringService" />
+        <activity android:name=".reco.RecoMonitoringActivity" />
+
+        <activity android:name=".reco.RecoRangingActivity" />
+        <service android:name="com.perples.recosdk.RECOBeaconService" />
+        <service android:name=".reco.RecoBackgroundRangingService"/>
+
+
+        <service android:name=".commie.MyService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+    </application>
+
+</manifest>
