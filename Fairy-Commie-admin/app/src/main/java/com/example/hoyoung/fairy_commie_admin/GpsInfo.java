@@ -18,23 +18,23 @@ public class GpsInfo extends Service implements LocationListener {
 
     private final Context mContext;
 
-    // ÇöÀç GPS »ç¿ëÀ¯¹«
+    // í˜„ì¬ GPS ì‚¬ìš©ìœ ë¬´
     boolean isGPSEnabled = false;
 
-    // ³×Æ®¿öÅ© »ç¿ëÀ¯¹«
+    // ë„¤íŠ¸ì›Œí¬ ì‚¬ìš©ìœ ë¬´
     boolean isNetworkEnabled = false;
 
-    // GPS »óÅÂ°ª
+    // GPS ìƒíƒœê°’
     boolean isGetLocation = false;
 
     Location location;
-    double lat; // À§µµ
-    double lon; // °æµµ
+    double lat; // ìœ„ë„
+    double lon; // ê²½ë„
 
-    // GPS Á¤º¸ ¾÷µ¥ÀÌÆ® °Å¸® 10¹ÌÅÍ
+    // GPS ì •ë³´ ì—…ë°ì´íŠ¸ ê±°ë¦¬ 10ë¯¸í„°
     private static final long MIN_DISTANCE_UPDATES = 10;
 
-    // GPS Á¤º¸ ¾÷µ¥ÀÌÆ® ½Ã°£ 1/1000
+    // GPS ì •ë³´ ì—…ë°ì´íŠ¸ ì‹œê°„ 1/1000
     private static final long MIN_TIME_UPDATES = 1000 * 60 * 1;
 
     protected LocationManager locationManager;
@@ -68,7 +68,7 @@ public class GpsInfo extends Service implements LocationListener {
                         location = locationManager
                                 .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                         if (location != null) {
-                            // À§µµ °æµµ ÀúÀå
+                            // ìœ„ë„ ê²½ë„ ì €ì¥
                             lat = location.getLatitude();
                             lon = location.getLongitude();
                         }
@@ -102,7 +102,7 @@ public class GpsInfo extends Service implements LocationListener {
     }
 
     /**
-     * GPS Á¾·á
+     * GPS ì¢…ë£Œ
      * */
     public void stopUsingGPS() {
         if (locationManager != null) {
@@ -111,7 +111,7 @@ public class GpsInfo extends Service implements LocationListener {
     }
 
     /**
-     * À§µµ°ª
+     * ìœ„ë„ê°’
      * */
     public double getLatitude() {
         if (location != null) {
@@ -121,7 +121,7 @@ public class GpsInfo extends Service implements LocationListener {
     }
 
     /**
-     * °æµµ°ª
+     * ê²½ë„ê°’
      * */
     public double getLongitude() {
         if (location != null) {
@@ -135,15 +135,15 @@ public class GpsInfo extends Service implements LocationListener {
     }
 
     /**
-     * GPS Á¤º¸¸¦ °¡Á®¿ÀÁö ¸øÇßÀ»¶§ ¼³Á¤°ªÀ¸·Î °¥Áö ¹°¾îº¸´Â alert Ã¢
+     * GPS ì •ë³´ë¥¼ ê°€ì ¸ì˜¤ì§€ ëª»í–ˆì„ë•Œ ì„¤ì •ê°’ìœ¼ë¡œ ê°ˆì§€ ë¬¼ì–´ë³´ëŠ” alert ì°½
      * */
     public void showSettingsAlert() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(
                 mContext);
 
-        alertDialog.setTitle("GPS »ç¿ëÀ¯¹«¼ÂÆÃ");
+        alertDialog.setTitle("GPS ì‚¬ìš©ìœ ë¬´ì…‹íŒ…");
         alertDialog
-                .setMessage("GPS ¼ÂÆÃÀÌ µÇÁö ¾Ê¾ÒÀ»¼öµµ ÀÖ½À´Ï´Ù.\n ¼³Á¤Ã¢À¸·Î °¡½Ã°Ú½À´Ï±î?");
+                .setMessage("GPS ì…‹íŒ…ì´ ë˜ì§€ ì•Šì•˜ì„ìˆ˜ë„ ìˆìŠµë‹ˆë‹¤.\n ì„¤ì •ì°½ìœ¼ë¡œ ê°€ì‹œê² ìŠµë‹ˆê¹Œ?");
 
         alertDialog.setPositiveButton("Settings",
                 new DialogInterface.OnClickListener() {
