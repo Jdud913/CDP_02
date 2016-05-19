@@ -1,13 +1,11 @@
-package com.example.hoyoung.fairy_commie_admin;
+package hoyoung.myapplication;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-/**
- * Created by HoYoung on 2016-05-13.
- */
+
 public class IntroActivity extends Activity {
 
     private Handler mHandler;
@@ -22,14 +20,14 @@ public class IntroActivity extends Activity {
         mRunnable = new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         };
 
         mHandler = new Handler();
-        mHandler.postDelayed(mRunnable, 3000);
+        mHandler.postDelayed(mRunnable, 1000);
 
     }
 }
