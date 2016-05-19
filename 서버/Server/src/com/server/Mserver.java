@@ -26,6 +26,9 @@ public class Mserver implements Runnable {
 	Thread[] threadArr;
 	Search search;
 	
+	login log;
+	GPS gps;
+	
 	
 	 static String getTime() {
 	        String name = Thread.currentThread().getName();
@@ -41,7 +44,7 @@ public class Mserver implements Runnable {
     public Mserver(int num) {
         try {
             
-            serverSocket = new ServerSocket(8051);
+            serverSocket = new ServerSocket(8888);
             System.out.println(getTime() + " 준비중");
             
         	dm.startDatabase();
@@ -69,6 +72,9 @@ public class Mserver implements Runnable {
                 
                 
                 search = new Search(socket);
+                log = new login(socket);
+                gps = new GPS(socket);
+                
                 
                 InputStream in = socket.getInputStream();    
                 DataInputStream dis = new DataInputStream(in);
@@ -85,14 +91,26 @@ public class Mserver implements Runnable {
 	                switch(i)
 	                {
 	                
-		                case 1:
-		                {
-		                	search.FindPerson();
-		                }
+	                	case 1:
+	                	{
+	                		log.mlogin();
+	                		break;
+	                	}
 		                case 2:
 		                {
-		                	search.FindPeople();;
+		                	gps.insertbeacon();
+		                	break;
 		                }
+		                case 3:
+		                {
+		                	gps.sendloc();
+		                	break;
+		                }
+		                default:
+		                {
+		                	break;
+		                }
+		                
 	                        
 	                }
                 

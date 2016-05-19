@@ -86,31 +86,71 @@ public class login {
            	    
 	   }
 	   
-	   public String login() throws IOException
+//	   public String login() throws IOException
+//	   {
+//		   int check = 0;
+//		   split(dis.readUTF());
+//		   System.out.println(second + "/" +third);
+//		   check = dm.matchingIdPasswd(second, third);
+//		   
+//		   if(check == 1)
+//		   {
+//			   //dos.writeUTF("1/4");
+//			   System.out.println("1/4");
+//			   out2.println("1"+"/"+"4");
+//			   out2.flush();
+//			   return second;
+//		   }
+//		   else
+//		   {
+//			   //dos.writeUTF("1/5");
+//			   out2.println("1"+"/"+"5");
+//			   out2.flush();
+//			   System.out.println("1/5");
+//			   return null;
+//		   }
+//		   
+//	   }
+	   
+	   public void mlogin() throws IOException
 	   {
 		   int check = 0;
+		   int check1 = 0; 
 		   split(dis.readUTF());
 		   System.out.println(second + "/" +third);
-		   check = dm.matchingIdPasswd(second, third);
+		   check = dm.matchingmId(second);
+		   check1 = dm.matchingmpasswd(third);
 		   
-		   if(check == 1)
+		   if(check == 1 && check == 1)
 		   {
 			   //dos.writeUTF("1/4");
-			   System.out.println("1/4");
-			   out2.println("1"+"/"+"4");
+			   System.out.println("complete");
+			   out2.println("complete");
 			   out2.flush();
-			   return second;
 		   }
-		   else
+		   else if(check != 1)
 		   {
 			   //dos.writeUTF("1/5");
-			   out2.println("1"+"/"+"5");
+			   out2.println("id error");
+			   System.out.println("id error");
 			   out2.flush();
-			   System.out.println("1/5");
-			   return null;
+			   //System.out.println("error");
+		   }
+		   else if(check != 1)
+		   {
+			   out2.println("passwd error");
+			   System.out.println("passwd error");
+			   out2.flush();
+		   }
+		   else if(check == 1 && check == 1)
+		   {
+			   out2.println("id & passwd error");
+			   System.out.println("passwd error");
+			   out2.flush();
 		   }
 		   
 	   }
+	   
 	   
 	   public void split(String buffer)
 	    {

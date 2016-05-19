@@ -151,7 +151,7 @@ public class DBmanager {
 		
 	}
 	
-	public int matchingIdPasswd(String a ,String b)
+	public int matchingmId(String a)
 	{
 		int check  = 0 ;
 		try
@@ -159,15 +159,12 @@ public class DBmanager {
 			if(conn == null)
 				return -1;
 			
-			String query = "SELECT count(*) FROM userdata WHERE id = ? AND passwd = ?";
+			String query = "SELECT count(*) FROM master WHERE id = ?";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1,a);
-			pstmt.setString(2,b);
 			
 			Statement st = conn.createStatement();
-			
-			
 			ResultSet rs = pstmt.executeQuery();
 
 	      while (rs.next())
@@ -186,32 +183,234 @@ public class DBmanager {
 	      return -1;
 	    }
 	  }
-	public void insertlocation(String id,String location )
-	{	
-		try {
+	public int matchingmpasswd(String a)
+	{
+		int check  = 0 ;
+		try
+	    {
+			if(conn == null)
+				return -1;
+			
+			String query = "SELECT count(*) FROM master WHERE passwd = ?";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,a);
+			
+			Statement st = conn.createStatement();
+			ResultSet rs = pstmt.executeQuery();
 
-						
+	      while (rs.next())
+	      {
+	    	  check = rs.getInt(1);
+
+	      }	      
+	      st.close();
+	      return check;
+	    }
+		catch (Exception e)
+	    {
+	      System.err.println("Got an exception! ");
+	      System.err.println(e.getMessage());
+	      
+	      return -1;
+	    }
+	  }
+	
+	public int matchingId(String a)
+	{
+		int check  = 0 ;
+		try
+	    {
+			if(conn == null)
+				return -1;
+			
+			String query = "SELECT count(*) FROM beacon WHERE userid = ? ";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,a);
+			
+			Statement st = conn.createStatement();
+			ResultSet rs = pstmt.executeQuery();
+
+	      while (rs.next())
+	      {
+	    	  check = rs.getInt(1);
+
+	      }	      
+	      st.close();
+	      return check;
+	    }
+		catch (Exception e)
+	    {
+	      System.err.println("Got an exception! ");
+	      System.err.println(e.getMessage());
+	      
+	      return -1;
+	    }
+	  }
+	public int matchingminor(String a)
+	{
+		int check  = 0 ;
+		try
+	    {
+			if(conn == null)
+				return -1;
+			
+			String query = "SELECT count(*) FROM beacon WHERE minor = ? ";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,a);
+			
+			Statement st = conn.createStatement();
+			ResultSet rs = pstmt.executeQuery();
+
+	      while (rs.next())
+	      {
+	    	  check = rs.getInt(1);
+
+	      }	      
+	      st.close();
+	      return check;
+	    }
+		catch (Exception e)
+	    {
+	      System.err.println("Got an exception! ");
+	      System.err.println(e.getMessage());
+	      
+	      return -1;
+	    }
+	  }
+	
+	public int mIdPasswd(String a ,String b)
+	{
+		int check  = 0 ;
+		try
+	    {
+			if(conn == null)
+				return -1;
+			
+			String query = "SELECT count(*) FROM master WHERE id = ? AND passwd = ?";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,a);
+			pstmt.setString(2,b);
+			
+			Statement st = conn.createStatement();
+			ResultSet rs = pstmt.executeQuery();
+
+	      while (rs.next())
+	      {
+	    	  check = rs.getInt(1);
+
+	      }	      
+	      st.close();
+	      return check;
+	    }
+		catch (Exception e)
+	    {
+	      System.err.println("Got an exception! ");
+	      System.err.println(e.getMessage());
+	      
+	      return -1;
+	    }
+	 }
+	
+	
+	
+	public void insertlocation(String id)
+	{	
+		try {					
 	            String stm = "INSERT INTO location" +
-	            		" (id, location) " +
-	            		" VALUES(?,?)";
+	            		" (userid) " +
+	            		" VALUES(?)";
 	            pstmt = conn.prepareStatement(stm);
 	            
 	            pstmt.setString(1, id);
-	            pstmt.setString(2, location);
 	            pstmt.executeUpdate();
 	            
 	            System.out.println("successful inserted");
 
 
-			} catch (SQLException e) {
-
+			} catch (SQLException e) 
+			{
 				System.out.println("something is wrong!");
 				e.printStackTrace();
 				return;
-
 			}
-	
 	}
+	
+	
+	public void insertbeacon(String userid,String uid,String major, String minor )
+	{	
+		
+		
+		
+		
+		try {					
+	            String stm = "INSERT INTO beacon" +
+	            		"(userid,uid,major,minor)" +
+	            		"VALUES(?,?,?,?)";
+	            pstmt = conn.prepareStatement(stm);
+	            
+	            pstmt.setString(1, userid);
+	            System.out.println(userid);
+	            pstmt.setString(2, uid);
+	            System.out.println(uid);
+	            pstmt.setString(3, major);
+	            System.out.println(major);
+	            pstmt.setString(4, minor);
+	            System.out.println(minor);
+	            pstmt.executeUpdate();
+	            
+	            System.out.println("successful inserted");
+
+
+			} catch (SQLException e) 
+			{
+				System.out.println("something is wrong!");
+				e.printStackTrace();
+				return;
+			}
+	}
+	
+	public String findid(String minor)
+	{
+		String uuid = "";
+		
+	try
+    {
+		if(conn == null)
+			return null;
+		
+		String query = "SELECT userid FROM beacon WHERE minor = ? ";
+		
+		pstmt = conn.prepareStatement(query);
+	      
+	    pstmt.setString(1, minor);
+		
+	    Statement st = conn.createStatement();
+		ResultSet rs = pstmt.executeQuery();
+                
+      // iterate through the java resultset
+      while (rs.next())
+      {
+    	  uuid = rs.getString("userid");
+        
+        // print the results
+        
+      }
+      
+      st.close();
+      return uuid;
+    }
+	catch (Exception e)
+    {
+      System.err.println("Got an exception! ");
+      System.err.println(e.getMessage());
+      
+      return null;
+    }
+  }
 	
 	
 	public String getPlocation(String id)
@@ -415,24 +614,25 @@ public class DBmanager {
     }
   }
 	
-	void updatelocation(String id, String location)
-	{
-		try {
-		 String query = "update location set location = ? where id = ?";
-		 pstmt = conn.prepareStatement(query);
-		 pstmt.setString (1, location);
-		 pstmt.setString(2, id);
-	 
-	      // execute the java preparedstatement
-		 pstmt.executeUpdate();
-		} catch (SQLException e) {
-
-			System.out.println("something is wrong!");
-			e.printStackTrace();
-			return;
-
-		}
-	}
+//	public void updatelocation(String id, String lat , String longi )
+//	{
+//		try {
+//		 String query = "update location set lat = ? , longi = ? where id = ?";
+//		 pstmt = conn.prepareStatement(query);
+//		 pstmt.setString (1, lat);
+//		 pstmt.setString (2, longi);
+//		 pstmt.setString(3, id);
+//	 
+//	      // execute the java preparedstatement
+//		 pstmt.executeUpdate();
+//		} catch (SQLException e) {
+//
+//			System.out.println("something is wrong!");
+//			e.printStackTrace();
+//			return;
+//
+//		}
+//	}
 	
 	void endlocation()
 	{
@@ -455,7 +655,7 @@ public class DBmanager {
 	}
 	
 	
-	public void getbeacon(List<String> id ,List<String> ma ,List<String> mi )
+	public void getbeacon(List<String> userid ,List<String> id ,List<String> ma ,List<String> mi )
 	{
 
 		
@@ -464,7 +664,7 @@ public class DBmanager {
 		if(conn == null)
 			return;
 		
-		String query = "SELECT uid , major , minor  FROM beacon  ";
+		String query = "SELECT userid ,uid , major , minor  FROM beacon  ";
 		
 		pstmt = conn.prepareStatement(query);
 	    
@@ -475,6 +675,7 @@ public class DBmanager {
       // iterate through the java resultset
       while (rs.next())
       {
+    	  userid.add(rs.getString("userid"));
     	  id.add(rs.getString("uid"));
     	  ma.add(rs.getString("major"));
     	  mi.add(rs.getString("minor"));
@@ -496,5 +697,61 @@ public class DBmanager {
   }
 	
 	
+	public void getloc(List<String> id ,List<String> lat ,List<String> longi )
+	{
+
+		
+	try
+    {
+		if(conn == null)
+			return;
+		
+		String query = "SELECT userid , lat , longi  FROM location  ";
+		
+		pstmt = conn.prepareStatement(query);
+	    
+		
+	    Statement st = conn.createStatement();
+		ResultSet rs = pstmt.executeQuery();
+                
+      // iterate through the java resultset
+      while (rs.next())
+      {
+    	  id.add(rs.getString("userid"));
+    	  lat.add(rs.getString("lat"));
+    	  longi.add(rs.getString("longi"));
+    	  
+        
+        // print the results
+        
+      }
+      
+      st.close();
+    }
+	catch (Exception e)
+    {
+      System.err.println("Got an exception! ");
+      System.err.println(e.getMessage());
+      
+      return;
+    }
+  }
+	
+	public void updatelocation(String id ,String lat ,String longi ) throws SQLException
+	{
+	
+		String sql = "UPDATE location SET lat=? , longi=? WHERE userid=?";
+		 
+		PreparedStatement statement = conn.prepareStatement(sql);
+		statement.setString(1, lat);
+		statement.setString(2, longi);
+		statement.setString(3, id);
+		 
+		int rowsUpdated = statement.executeUpdate();
+		if (rowsUpdated > 0) {
+		    System.out.println("An existing user was updated successfully!");
+		}
+	
+	}
 }
 	

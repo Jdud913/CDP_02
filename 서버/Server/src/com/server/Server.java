@@ -18,6 +18,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -45,9 +46,7 @@ public class Server implements Runnable {
     public Server(int num) {
         try {
             
-            serverSocket = new ServerSocket(7777);
-            System.out.println(getTime() + " 준비중");
-            
+            serverSocket = new ServerSocket(7777);            
         	dm.startDatabase();
             threadArr = new Thread[num];
         } catch (IOException e) {
@@ -98,24 +97,40 @@ public class Server implements Runnable {
                 
 	                case 1:
 	                {
-	                	 log.SignUp();      
+						gps.insertbeacon();
+						
+	                	gps.insertgps();
 	                     break;       
 	                }
 	                case 2:
 	                {
-	                	log.login();
+	                	log.mlogin();
 	                	break;
 	                }
 	                case 3:
 	                {
-	                	gps.insertgps(Id);
+	                	try {
+							gps.updatelocation();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 	                	break;
 	                }
 	                case 4:
 	                {
-	                	gps.sendmsg();
+	                	gps.sendloc();
 	                	break;
 	                }
+	                case 5:
+	                {
+	                	gps.sendbeacon();
+	                }
+	                default :
+	                {
+	                	break;
+	                }
+	                
                         
                 }
                 
