@@ -4,7 +4,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:weightSum="1"
-    android:background="@drawable/minion">
+    android:background="@drawable/asdf11">
 
     <LinearLayout
         android:orientation="vertical"
