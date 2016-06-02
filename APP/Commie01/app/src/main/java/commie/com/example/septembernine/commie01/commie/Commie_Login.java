@@ -20,7 +20,6 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 import commie.com.example.septembernine.commie01.R;
-
 public class Commie_Login extends Activity {
 
     String Id = "";
@@ -39,7 +38,7 @@ public class Commie_Login extends Activity {
     OutputStream out;
     DataOutputStream dos;
 
-    private String ip = "20.20.3.154"; // IP
+    private String ip = "20.20.3.47"; // IP
     private int port = 7777; // PORT번호
 
     // 액티비티넘어갈 때마다 죽이고 새로 살리고
@@ -77,8 +76,8 @@ public class Commie_Login extends Activity {
 
         bt_OK.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-
-//                Intent i = new Intent(Commie_Login.this, Commie_Beacon.class);
+//
+//                Intent i = new Intent(Commie_Login.this, Commie_Beacon01.class);
 //                startActivity(i);
 //                finish();
 

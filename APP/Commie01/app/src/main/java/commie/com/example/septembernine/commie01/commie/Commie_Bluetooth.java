@@ -64,7 +64,7 @@ public class Commie_Bluetooth extends Activity {
         Intent intent = new Intent(this, RecoBackgroundRangingService.class);
         startService(intent);
 
-        Intent i = new Intent(Commie_Bluetooth.this, Commie_Login.class);
+        Intent i = new Intent(Commie_Bluetooth.this, Commie_Beacon.class);
         startActivity(i);
         finish();
 
