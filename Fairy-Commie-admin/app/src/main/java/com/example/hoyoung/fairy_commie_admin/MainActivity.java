@@ -25,21 +25,18 @@ import java.util.List;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
+    //GoogleMap 객체
     private GoogleMap mGoogleMap;
+    //먼저 현재 위치 정보를 가져오기 위한 GpsInfo 클래스
     private GpsInfo gps;
-//    private mHandler aHandler;
 
-    List<String> second;
-    List<String> third;
-    List<String> fourth;
+    List<String> u_id;
+    List<String> u_longti;
+    List<String> u_lati;
 
-    String second1;
-    String third1;
-    String fourth1;
-
-    String mac_s;
-    String major_s;
-    String minor_s;
+    String u_id1;
+    String u_longti1;
+    String u_lati1;
 
     double longti;
     double lati;
@@ -56,22 +53,18 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         Log.w("TAG", "2");
-
-        //핸들러 객체 생성
-//        aHandler = new mHandler();
 
         // BitmapDescriptorFactory 생성하기 위한 소스
         MapsInitializer.initialize(getApplicationContext());
         init();
 
-        second1 = "";
-        third1 = "";
-        fourth1 = "";
-        second = new ArrayList<String>();
-        third = new ArrayList<String>();
-        fourth = new ArrayList<String>();
+        u_id1 = "";
+        u_longti1 = "";
+        u_lati1 = "";
+        u_id = new ArrayList<String>();
+        u_longti = new ArrayList<String>();
+        u_lati = new ArrayList<String>();
 
         Button bt_renew = (Button) findViewById(R.id.btn_renew);
         Button bt_Add = (Button) findViewById(R.id.btn_AddBeacon);
@@ -81,7 +74,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     }
 
-
+    //Google Map 화면의 초기화
     public void clearMarker() {
 
         mGoogleMap.clear();
@@ -92,6 +85,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 //        mGoogleMap.addMarker(marker);
     }
 
+    //사용자의 id와 위도, 경도 값을 받아와 구글 맵 위에 marker로 찍어준다.
     public void addMarker(String uid, double x, double y) {
 
         LatLng loc = new LatLng(x, y);
@@ -110,16 +104,17 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
      */
     private void init() {
 
+        //현재 MainActivity 화면에 띄우기 위해 Fragment 활용
         GooglePlayServicesUtil.isGooglePlayServicesAvailable(MainActivity.this);
         mGoogleMap = ((SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map)).getMap();
 
-        // 맵의 이동
-        //mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
-
+        //GpsInfo 객체의 생성
         gps = new GpsInfo(MainActivity.this);
-        // GPS 사용유무 가져오기
+
+        // isGetLocation() 함수로 제대로 가져왔는지 판단한다.
         if (gps.isGetLocation()) {
+            //위도와 경도를 가져온다.
             double latitude = gps.getLatitude();
             double longitude = gps.getLongitude();
 
@@ -136,9 +131,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
             // Map 을 zoom 합니다.
             mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(18));
-
-
-            //mGoogleMap.addMarker(optFirst).showInfoWindow();
+            
         }
     }
 
@@ -151,34 +144,24 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
                 clearMarker();
 
+                //서버와의 통신을 위한 쓰레드를 생성 및 시작한다.
                 ReceiveThread rThread = new ReceiveThread();
                 rThread.start();
 
-                for (int i = 0; i < second.size(); i++) {
-//                    if(third.get(i) != null) {
+                //서버로부터 받은 사용자의 아이디와 위치를 지도위에 출력한다.
+                for (int i = 0; i < u_id.size(); i++) {
 
-                        lati = Double.valueOf(third.get(i)).doubleValue();
-                        longti = Double.valueOf(fourth.get(i)).doubleValue();
-                        addMarker(second.get(i), lati, longti);
+                    lati = Double.valueOf(u_longti.get(i)).doubleValue();
+                    longti = Double.valueOf(u_lati.get(i)).doubleValue();
+                    addMarker(u_id.get(i), lati, longti);
 
-//                    }
                 }
 
-                second.clear();
-                third.clear();
-                fourth.clear();
+                u_id.clear();
+                u_longti.clear();
+                u_lati.clear();
 
                 break;
-
-            //AlertDialog를 사용하여 서버에 비콘을 추가 등록하기 위한 버튼
-//            case R.id.btn_AddBeacon :
-//
-//                AlertThread thread = new AlertThread();
-//                thread.start();
-//
-//                break;
-
-
         }
     }
 
@@ -190,41 +173,32 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 Socket socket;
                 DataOutputStream output;
 
+                //socket 객체를 생성하여 ip주소와 port 번호를 넘겨 서버와 연결한다.
                 socket = new Socket(ip, port);
 
+                //DataOutputStream을 통해 Data를 전송한다.
                 output = new DataOutputStream(socket.getOutputStream());
-
                 output.writeUTF("4");
                 output.flush();
 
+                //서버로부터 사용자들의 위치를 전송받기 위한 BufferedReader를 생성한다.
                 BufferedReader reader = new BufferedReader(new BufferedReader(new InputStreamReader(socket.getInputStream())));
 
                 while (true) {
-
+                    //서버로부터 메시지를 받는다.
                     read = reader.readLine();
 
+                    //서버로부터 받은 메시지가 end라면 메시지를 받기위해 대기하는 것을 중지한다.
                     if (read.equals("end")) {
                         break;
                     }
-                    split1(read);
 
-                    second.add(second1);
-                    third.add(third1);
-                    fourth.add(fourth1);
+                    //서버로로부터 받은 메시지가 end가 아닐 경우 전달받은 메시지를 분리하여 String List에 각각에 저장한다.
+                    split(read);
+                    u_id.add(u_id1);
+                    u_longti.add(u_longti1);
+                    u_lati.add(u_lati1);
                 }
-
-//                for (int i = 0; i < second.size(); i++) {
-////                    if(third.get(i) != null) {
-//                        lati = Double.valueOf(third.get(i)).doubleValue();
-//                        longti = Double.valueOf(fourth.get(i)).doubleValue();
-//                        addMarker(second.get(i), lati, longti);
-////                    }
-//                }
-
-
-//                second.clear();
-//                third.clear();
-//                fourth.clear();
 
                 socket.close();
 
@@ -237,11 +211,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     }
 
-    public void split1(String buffer) {
+    //buffer에 담긴 String을 / 기호를 기준으로 분리하여 저장한다.
+    public void split(String buffer) {
 
-        second1 = buffer.split("/")[0];
-        third1 = buffer.split("/")[1];
-        fourth1 = buffer.split("/")[2];
+        u_id1 = buffer.split("/")[0];
+        u_longti1 = buffer.split("/")[1];
+        u_lati1 = buffer.split("/")[2];
 
     }
 }
