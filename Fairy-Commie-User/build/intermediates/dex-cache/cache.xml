@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-measurement\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="613298b7aa012f121ce542881c0a599ebd8078f2">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-c3b1c9d889123e977adb33cf5c62b0e4cc6be1e5.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="2d7fe76982677315c4dc4edfb459c8ca718a9d4c">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-560be979ea4feccdfa7c155f089adf4b37a1209d.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-6e21b49dc5fc7fb6713169231335235b88192012.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\Fairy-Commie-User\reco-sdk-android\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="0e6ef4612614f3bf4ba58b17f971eab397f8b6df">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-e58fd365093a114d74ba927488dd2cb11e911a1e.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="b36f30ac5ee5d5214f4b1e2ac49f11889d58e71a">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-6d1bd1d0f0632a44908def4c407728fe58aa44cd.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="b82b8e847173c28efffcd291b2a0b1ae9ad17fa4">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-a4d65c3d0382c8dc3d87f54664e44917429abf0d.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="d358b3dd49a7c67844622dcbc9cf4339e13952ce">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-85d47fa20114d46678114a07c37d38534e904d3f.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-a9d072940ef0692a81e36bf9c13d8e82a1490f0b.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="9684c95278dc45a142d7de3db9e7e39aa520e1e0">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-a33eed4efb59a596370fe3849b7a247e1cbadcf7.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="1a78298e7724d5440d210bcb946b3493250d354d">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-75f0cc8e612c9574404a6de1035d14f39bf3f0ca.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="1c9f35e952b212c843f7bd2c7eec8e82ad95602e">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-75cc4c2f7b2dec46bdb33962a32c6278db185839.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ed88e1f0c8fbf66e1da918545f0a6790f893bceb">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-3111d0476a79a56009b74e5049b8d98825025763.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0-alpha1\jars\libs\internal_impl-24.0.0-alpha1.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="e57fba0a2d57d3501d8f4ff44c23092978804845">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\internal_impl-24.0.0-alpha1-8b9854af1f34e7f7d7c5c6141b849b7ba3965eb3.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="08d34b2d135c1cc96ab506fd8bf6916d1e2f391a">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-e1d44d7ab7ac834308c7bd4d1447d0b94aa5029d.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="f2df436a8f02ce7e4d7d209671fc45f97c470f0e">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-6e4ce61a9f6e6ffc5b5a5e9e9f7e50a0f38303a7.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="3a364cc6b698d1b3b2d284f64618daaa7fe77ddf">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-16c7e1b0a9cb8c9a33a34ac703ad730a05c962c8.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.0.0-alpha1\support-annotations-24.0.0-alpha1.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="b8062546971a3d196343232a19a3c0016272ba47">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\support-annotations-24.0.0-alpha1-2ee619aa8673185f5a5d7532a436e9191162bd1b.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="551e78f21acf69ebfb489c0e79647824c838013e">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-6a9209aa76e78fa380ab0b716ee5c4004a659135.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="a6af5beedc2e8c946abc3771525e2fed77439309">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-1fa34641de3e8fb3054e3de77b63227b29085ee0.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="966e5771a5a2ebfb31bf00d7cd6cd2546d245517">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-4f2ed499d8007dfe9dc2c05ae0fae498838e9253.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="a8412b654dab86d57bf90683367488211c8a81f1">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-474568cc94f5998b5feedd1099f03a8ea3186714.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="04de44f90606c77f3b28cf44861f306290505aac">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-a30012c7058876a37347583bb84ca38398b56a1d.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="62209cacb78ffe64f71ed8527fd08d8fbb9fd433">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-5795b51e471a5cae5ad988cfe158551ef42bb6aa.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="9cad249cf62751a323d9af568caf12284b7d6062">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-d43bd557902b3ff63e4155f00dcdeae50a79210e.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="9aaaea3a89040f8176f810c85e288fc74d5d1f12">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-716b19b71d93b468765d587c04b2803fca9e4384.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="e167a34eaca0b31704212f43f9576ea84e05046f">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-1cf0b2a912615ae379c80427e5b9f5f65b049357.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="c54246475c1bb64ac6857d1320364bfbfeda2c46">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-7073e99a5ba307e96c89b508ea73d7d1be66ddf6.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.0.0\jars\libs\internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="03d38bb042efe3e5ce27ba66b729a9523c36d8fe">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.0-a2c0ad09301a4e07e1c005bcfc1bdcebea65e54b.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="b5e7892fb0708e792e0e933c4c0a0ca0ac7831fb">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-24d72378e55660d350110ad184392f65f14b5ff3.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="9fe026fb4c7fce21bc5142f6e1bdf844f28061ac">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-096d81dd9389a408e5359ab6dcdf6441c5c15a48.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-f7a07acc52f3af458f3305cb2123f01269f2ac5d.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="0194a7409c40de94fb539d4ad9928ec5d47afeb7">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-c8dc0b04e585200bbc5495e295cff3c8ec6ce2f1.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="dfecc4d835cdabcdecf7e95f0d20a3ef1e9d8ef4">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\Fairy-Commie-User\app\build\intermediates\pre-dexed\debug\classes-1eb1c56d8db8d2b20ea05da31db098a652997094.jar" />
+    </item>
+
+</items>

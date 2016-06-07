@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\AddBeacon\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ed88e1f0c8fbf66e1da918545f0a6790f893bceb">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\AddBeacon\app\build\intermediates\pre-dexed\debug\classes-090cf3534f5eb848c97e0be898a714ad98ea83af.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\AddBeacon\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="9aaaea3a89040f8176f810c85e288fc74d5d1f12">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\AddBeacon\app\build\intermediates\pre-dexed\debug\classes-a8357fd7dbc110432a3d36ec99248a9d319505f1.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\AddBeacon\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="9684c95278dc45a142d7de3db9e7e39aa520e1e0">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\AddBeacon\app\build\intermediates\pre-dexed\debug\classes-60131537d0ad8fdd06d157f09e344a2fecb2ff72.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.0.0-alpha1\support-annotations-24.0.0-alpha1.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="b8062546971a3d196343232a19a3c0016272ba47">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\AddBeacon\app\build\intermediates\pre-dexed\debug\support-annotations-24.0.0-alpha1-2ee619aa8673185f5a5d7532a436e9191162bd1b.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\AddBeacon\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.0.0-alpha1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="a6af5beedc2e8c946abc3771525e2fed77439309">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\AddBeacon\app\build\intermediates\pre-dexed\debug\classes-2567ad0c4d0307d3f4145d45134bf6436980c111.jar" />
+    </item>
+    <item
+        jar="C:\Users\HoYoung\Desktop\CDP-02\AddBeacon\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0-alpha1\jars\libs\internal_impl-24.0.0-alpha1.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="e57fba0a2d57d3501d8f4ff44c23092978804845">
+        <dex dex="C:\Users\HoYoung\Desktop\CDP-02\AddBeacon\app\build\intermediates\pre-dexed\debug\internal_impl-24.0.0-alpha1-64e436b543078c1351a817a85ac5c41a8bd33d92.jar" />
+    </item>
+
+</items>
