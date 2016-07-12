@@ -20,12 +20,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="비콘추가"
-        android:id="@+id/btn_AddBeacon"
+        android:text="비콘등록"
+        android:id="@+id/btn_enroll"
         android:layout_below="@+id/btn_renew"
         android:layout_alignLeft="@+id/btn_renew"
         android:layout_alignStart="@+id/btn_renew" />
-
 
 
 </RelativeLayout>

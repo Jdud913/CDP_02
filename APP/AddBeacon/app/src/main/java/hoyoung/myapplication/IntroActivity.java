@@ -22,7 +22,7 @@ public class IntroActivity extends Activity {
             public void run() {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         };
 
